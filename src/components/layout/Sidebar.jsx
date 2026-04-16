@@ -7,7 +7,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'experience', 'skills', 'education'];
+      const sections = ['experience', 'skills', 'education', 'about'];
       let current = '';
       
       for (const section of sections) {
@@ -27,10 +27,10 @@ const Sidebar = () => {
   }, [activeSection]);
 
   const navLinks = [
-    { id: 'about', label: 'Sobre Mí' },
     { id: 'experience', label: 'Experiencia' },
     { id: 'skills', label: 'Habilidades' },
     { id: 'education', label: 'Educación & Idiomas' },
+    { id: 'about', label: 'Sobre Mí' },
   ];
 
   return (

@@ -39,24 +39,19 @@ function App() {
         
         {/* Left Column: Fixed Sidebar */}
         <header className="lg:sticky lg:top-0 lg:max-h-screen lg:w-5/12 lg:flex lg:flex-col lg:justify-between py-12 lg:py-24 px-6 lg:pl-12 xl:pl-20">
-          <div className="hidden lg:absolute lg:top-10 lg:right-6 lg:block border border-slate-200 dark:border-slate-800 rounded-full bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-1 shadow-sm">
-             <ThemeToggle isDark={isDark} toggle={() => setIsDark(!isDark)} />
-          </div>
           <Sidebar />
         </header>
 
         {/* Right Column: Scrollable Content */}
         <main className="lg:w-7/12 pt-24 lg:pt-24 pb-12 px-6 lg:pr-12 xl:pr-20 space-y-32">
           
-          {/* About injected to replace the simple block */}
-          <About />
-
           <Experience />
           <Skills />
           <Education />
+          <About />
           
           {/* Footer */}
-          <footer className="pt-20 pb-8 text-center sm:text-left text-sm opacity-60 font-mono">
+          <footer className="pt-10 pb-8 text-center sm:text-left text-sm opacity-60 font-mono">
             <p className="flex items-center justify-center sm:justify-start gap-2">
                <span className="w-2 h-2 rounded-full bg-enagas-cyan animate-pulse"></span>
                © {new Date().getFullYear()} Ignacio Ten Quilis. Desarrollado con Vite, React y Tailwind.
@@ -64,6 +59,11 @@ function App() {
           </footer>
         </main>
       </div>
+
+      <div className="hidden lg:block fixed top-8 right-8 z-50">
+        <ThemeToggle isDark={isDark} toggle={() => setIsDark(!isDark)} />
+      </div>
+
     </div>
   );
 }
