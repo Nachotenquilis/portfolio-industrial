@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-industrial-900 bg-industrial-100 transition-colors duration-700 ease-in-out font-sans;
+  }
+  
+  .dark body {
+    @apply text-industrial-100 bg-industrial-900;
+  }
+}
+
+@layer utilities {
+  .neon-text-blue {
+    text-shadow: 0 0 5px #00E5FF, 0 0 10px #00E5FF, 0 0 20px #00E5FF;
+  }
+  .neon-text-orange {
+    text-shadow: 0 0 5px #FF5722, 0 0 10px #FF5722, 0 0 20px #FF5722;
+  }
+  
+  .metallic-panel {
+    @apply bg-gradient-to-br from-industrial-200 to-industrial-300 border border-industrial-400 shadow-[inset_0_1px_rgba(255,255,255,0.6),0_4px_6px_rgba(0,0,0,0.1)];
+  }
+  
+  .dark .metallic-panel {
+    @apply bg-gradient-to-br from-industrial-800 to-industrial-900 border border-industrial-700 shadow-[inset_0_1px_rgba(255,255,255,0.1),0_4px_6px_rgba(0,0,0,0.5)];
+  }
+
+  .grid-bg {
+    @apply bg-grid-pattern;
+  }
+  .dark .grid-bg {
+    background-image: url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0 0h40v40H0V0zm39 39V1H1v38h38z" fill="%23ffffff" fill-opacity="0.03" fill-rule="evenodd"/%3E%3C/svg%3E');
+  }
+}
