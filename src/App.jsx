@@ -4,12 +4,13 @@ import Sidebar from './components/layout/Sidebar';
 import Experience from './components/sections/Experience';
 import Skills from './components/sections/Skills';
 import Education from './components/sections/Education';
+import MouseGlow from './components/layout/MouseGlow';
+import { motion } from 'framer-motion';
 
 function App() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // Check system preference
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setIsDark(true);
     }
@@ -24,14 +25,16 @@ function App() {
   }, [isDark]);
 
   return (
-    <div className="min-h-screen grid-bg relative selection:bg-enagas-cyan selection:text-white">
-      {/* Mobile Top Nav for Theme Toggle */}
-      <div className="lg:hidden fixed top-0 w-full z-50 glass-panel border-b-0 px-6 py-4 flex justify-between items-center text-sm font-mono tracking-widest text-enagas-blue dark:text-enagas-cyan font-semibold">
+    <div className="min-h-screen grid-bg relative selection:bg-enagas-cyan selection:text-white transition-colors duration-700">
+      <MouseGlow />
+      
+      {/* Mobile Top Nav */}
+      <div className="lg:hidden fixed top-0 w-full z-50 glass-panel border-b-0 px-6 py-4 flex justify-between items-center text-sm font-mono tracking-widest text-enagas-blue dark:text-enagas-cyan font-bold backdrop-blur-xl">
          <span>Ignacio.</span>
          <ThemeToggle isDark={isDark} toggle={() => setIsDark(!isDark)} />
       </div>
 
-      <div className="max-w-7xl mx-auto min-h-screen lg:flex">
+      <div className="max-w-7xl mx-auto min-h-screen lg:flex relative z-10">
         
         {/* Left Column: Fixed Sidebar */}
         <header className="lg:sticky lg:top-0 lg:max-h-screen lg:w-5/12 lg:flex lg:flex-col lg:justify-between py-12 lg:py-24 px-6 lg:pl-12 xl:pl-20">
@@ -42,20 +45,29 @@ function App() {
         </header>
 
         {/* Right Column: Scrollable Content */}
-        <main className="lg:w-7/12 py-12 lg:py-24 px-6 lg:pr-12 xl:pr-20 space-y-24">
-          <section id="about" className="lg:hidden text-slate-600 dark:text-slate-400 leading-relaxed font-light mb-16">
+        <main className="lg:w-7/12 pt-24 lg:pt-24 pb-12 px-6 lg:pr-12 xl:pr-20 space-y-32">
+          <motion.section 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            id="about" 
+            className="lg:hidden text-slate-600 dark:text-slate-400 leading-relaxed font-light mt-12 mb-16 text-justify"
+          >
             Ingeniero Industrial cursando el Máster Habilitante. Me especializo en la automatización y mejora de procesos
             con el objetivo de aumentar la eficiencia operativa. Apasionado por soluciones analíticas, transición energética 
             y tecnologías low-code.
-          </section>
+          </motion.section>
 
           <Experience />
           <Skills />
           <Education />
           
           {/* Footer */}
-          <footer className="pt-20 pb-8 text-center sm:text-left text-sm opacity-50">
-            <p>© {new Date().getFullYear()} Ignacio Ten Quilis. Desarrollado con React y Tailwind.</p>
+          <footer className="pt-20 pb-8 text-center sm:text-left text-sm opacity-60 font-mono">
+            <p className="flex items-center justify-center sm:justify-start gap-2">
+               <span className="w-2 h-2 rounded-full bg-enagas-cyan animate-pulse"></span>
+               © {new Date().getFullYear()} Ignacio Ten Quilis. Desarrollado con Vite, React y Tailwind.
+            </p>
           </footer>
         </main>
       </div>
