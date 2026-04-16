@@ -17,7 +17,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="scroll-mt-24 mb-24">
+    <section id="skills" className="scroll-mt-24 mb-10">
       <div className="sticky top-0 z-20 -mx-6 mb-8 w-screen glass-panel px-6 py-5 lg:hidden">
         <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100">
           Habilidades
@@ -55,21 +55,21 @@ const Skills = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.8 }}
-        className="flex flex-wrap gap-3"
+        className="flex flex-wrap gap-2.5"
       >
          {[
            { name: 'Sharepoint', img: './sharepoint.png' },
            { name: 'PowerBI', img: './powerbi.png' },
            { name: 'PowerAutomate', img: './powerautomate.png' },
            { name: 'Copilot', img: './copilot.png' },
-           { name: 'PowerApps' },
-           { name: 'Excel (VBA)' },
+           { name: 'PowerApps', img: './powerapps.png' },
+           { name: 'Excel (VBA)', img: './excel.png' },
            { name: 'Innovación (IA)' },
            { name: 'Gestión de Proyectos' }
          ].map(skill => (
             <div 
               key={skill.name} 
-              className="flex items-center gap-2 px-4 py-1.5 text-xs font-mono font-medium rounded-md bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-enagas-cyan/30 transition-all cursor-default group"
+              className="flex items-center gap-2 px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-enagas-cyan/30 transition-all cursor-default group"
             >
                {skill.img && (
                  <img src={skill.img} alt={skill.name} className="w-4 h-4 object-contain group-hover:scale-110 transition-transform" />

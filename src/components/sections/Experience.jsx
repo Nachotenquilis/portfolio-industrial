@@ -54,7 +54,7 @@ const ExperienceItem = ({ role, company, period, tasks, url, logoUrl, delay = 0 
 
 const Experience = () => {
   return (
-    <section id="experience" className="group/list scroll-mt-24 mb-24">
+    <section id="experience" className="group/list scroll-mt-24">
       <div className="sticky top-0 z-20 -mx-6 mb-8 w-screen glass-panel px-6 py-5 lg:hidden">
         <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100">
           Experiencia

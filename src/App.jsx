@@ -43,7 +43,7 @@ function App() {
         </header>
 
         {/* Right Column: Scrollable Content */}
-        <main className="lg:w-7/12 pt-24 lg:pt-24 pb-12 px-6 lg:pr-12 xl:pr-20 space-y-32">
+        <main className="lg:w-7/12 pt-24 lg:pt-24 pb-12 px-6 lg:pr-12 xl:pr-20 space-y-20">
           
           <Experience />
           <Skills />

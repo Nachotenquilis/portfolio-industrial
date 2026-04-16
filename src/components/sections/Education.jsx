@@ -51,7 +51,7 @@ const Education = () => {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
         <EducationCard 
           title="Máster Universitario en Ingeniería Industrial"
           institution="Universitat Politècnica de València"
