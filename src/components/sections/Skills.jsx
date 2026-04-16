@@ -55,14 +55,26 @@ const Skills = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.8 }}
-        className="flex flex-wrap gap-2.5"
+        className="flex flex-wrap gap-3"
       >
-         {['PowerApps', 'PowerAutomate', 'Sharepoint', 'PowerBI', 'Excel (VBA)', 'Innovación (IA)', 'Copilot', 'Gestión de Proyectos'].map(skill => (
+         {[
+           { name: 'Sharepoint', img: './sharepoint.png' },
+           { name: 'PowerBI', img: './powerbi.png' },
+           { name: 'PowerAutomate', img: './powerautomate.png' },
+           { name: 'Copilot', img: './copilot.png' },
+           { name: 'PowerApps' },
+           { name: 'Excel (VBA)' },
+           { name: 'Innovación (IA)' },
+           { name: 'Gestión de Proyectos' }
+         ].map(skill => (
             <div 
-              key={skill} 
-              className="px-4 py-1.5 text-xs font-mono font-medium rounded-md bg-slate-100 dark:bg-enagas-cyan/5 text-slate-700 dark:text-enagas-cyan border border-slate-200 dark:border-enagas-cyan/20 hover:bg-enagas-blue/10 dark:hover:bg-enagas-cyan/15 hover:border-enagas-blue/30 dark:hover:border-enagas-cyan/40 transition-all cursor-default"
+              key={skill.name} 
+              className="flex items-center gap-2 px-4 py-1.5 text-xs font-mono font-medium rounded-md bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-enagas-cyan/30 transition-all cursor-default group"
             >
-               {skill}
+               {skill.img && (
+                 <img src={skill.img} alt={skill.name} className="w-4 h-4 object-contain group-hover:scale-110 transition-transform" />
+               )}
+               <span className="group-hover:text-enagas-blue dark:group-hover:text-enagas-cyan transition-colors">{skill.name}</span>
             </div>
          ))}
       </motion.div>
