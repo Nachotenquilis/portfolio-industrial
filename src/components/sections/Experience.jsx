@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const ExperienceItem = ({ role, company, period, tasks, url, delay = 0 }) => {
+const ExperienceItem = ({ role, company, period, tasks, url, logoUrl, delay = 0 }) => {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 30 }}
@@ -11,8 +11,8 @@ const ExperienceItem = ({ role, company, period, tasks, url, delay = 0 }) => {
       className="group relative grid pb-12 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50"
     >
       
-      {/* Background Hover Effect in Desktop (Glassy glow) */}
-      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-xl transition duration-500 motion-reduce:transition-none lg:block lg:group-hover:bg-slate-100/50 dark:lg:group-hover:bg-enagas-cyan/5 lg:group-hover:shadow-[0_4px_30px_rgba(0,0,0,0.02)] dark:lg:group-hover:shadow-[0_4px_30px_rgba(0,169,224,0.05)] border border-transparent lg:group-hover:border-slate-200/50 dark:lg:group-hover:border-enagas-cyan/10 backdrop-blur-sm"></div>
+      {/* Background Hover Effect in Desktop */}
+      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-xl transition duration-500 motion-reduce:transition-none lg:block lg:group-hover:bg-slate-100/50 dark:lg:group-hover:bg-slate-800/20 lg:group-hover:shadow-[0_4px_30px_rgba(0,0,0,0.02)] dark:lg:group-hover:shadow-[0_4px_30px_rgba(0,169,224,0.05)] border border-transparent lg:group-hover:border-slate-200/50 dark:lg:group-hover:border-enagas-cyan/10 backdrop-blur-sm"></div>
       
       {/* Date Header */}
       <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500 sm:col-span-2">
@@ -21,8 +21,13 @@ const ExperienceItem = ({ role, company, period, tasks, url, delay = 0 }) => {
       
       {/* Content */}
       <div className="z-10 sm:col-span-6">
-        <h3 className="font-semibold text-slate-900 dark:text-slate-100 leading-snug mb-3">
-          <a href={url || "#"} target="_blank" rel="noreferrer" className="inline-flex items-baseline font-bold leading-tight text-slate-900 dark:text-slate-200 hover:text-enagas-blue dark:hover:text-enagas-cyan focus-visible:text-enagas-cyan group/link text-base">
+        <h3 className="font-semibold text-slate-900 dark:text-slate-100 leading-snug mb-4 flex items-center gap-3">
+          {logoUrl && (
+             <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center bg-white p-1 shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden group-hover:scale-110 transition-transform duration-300">
+                <img src={logoUrl} alt={`${company} logo`} className="w-full h-full object-contain" />
+             </div>
+          )}
+          <a href={url || "#"} target="_blank" rel="noreferrer" className="inline-flex items-baseline font-bold leading-tight text-slate-900 dark:text-slate-200 hover:text-enagas-blue dark:hover:text-enagas-cyan focus-visible:text-enagas-cyan group/link text-base transition-colors">
             <span>
               {role} <span className="inline-block px-1 text-slate-300 dark:text-slate-600">·</span> 
               <span className="inline-block">{company}
@@ -62,6 +67,7 @@ const Experience = () => {
           company="Enagás GTS"
           period="Jun 2025 – Actual"
           url="https://www.enagas.es"
+          logoUrl="./enagas.png"
           delay={0.1}
           tasks={[
             "Coordinación y ejecución del proceso anual de asignación de capacidad de inyección de hidrógeno en la red gasista, conforme a la normativa vigente.",
@@ -77,6 +83,7 @@ const Experience = () => {
           company="Sika"
           period="Feb 2024 – Jul 2024"
           url="https://esp.sika.com/"
+          logoUrl="./sika.png"
           delay={0.2}
           tasks={[
             "Automatización de tareas mediante herramientas pertenecientes al entorno de Microsoft como PowerApps y PowerAutomate.",

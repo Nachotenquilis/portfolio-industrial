@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const EducationCard = ({ title, institution, period, bullets, extra, delay = 0 }) => (
+const EducationCard = ({ title, institution, period, bullets, extra, logoUrl, delay = 0 }) => (
   <motion.div 
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -9,10 +9,15 @@ const EducationCard = ({ title, institution, period, bullets, extra, delay = 0 }
     transition={{ duration: 0.6, delay }}
     className="group relative clean-card p-6 flex flex-col h-full bg-white dark:bg-[#071626] border border-slate-200 dark:border-slate-800/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-[0_10px_30px_rgba(0,169,224,0.05)] hover:border-enagas-cyan/40"
   >
-      <div className="flex justify-between items-start mb-2">
-        <h3 className="font-bold text-sm md:text-base pr-4 text-slate-800 dark:text-slate-200 group-hover:text-enagas-blue dark:group-hover:text-enagas-cyan transition-colors leading-tight">
+      <div className="flex justify-between items-start mb-4">
+        <h3 className="font-bold text-sm md:text-base pr-2 text-slate-800 dark:text-slate-200 group-hover:text-enagas-blue dark:group-hover:text-enagas-cyan transition-colors leading-tight">
           {title}
         </h3>
+        {logoUrl && (
+          <div className="w-10 h-10 rounded-md flex-shrink-0 flex items-center justify-center bg-white p-1 shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden ml-2 group-hover:scale-105 transition-transform duration-300">
+             <img src={logoUrl} alt={`${institution} logo`} className="w-full h-full object-contain" />
+          </div>
+        )}
       </div>
       <p className="text-xs font-mono text-slate-500 dark:text-slate-500 mb-5">{institution} <span className="opacity-40 px-1">/</span> {period}</p>
       
@@ -52,12 +57,14 @@ const Education = () => {
           institution="Universitat Politècnica de València"
           period="2024 – Actual"
           extra="Nivel 7 EQF-MEC"
+          logoUrl="./upv.png"
           delay={0.1}
         />
         <EducationCard 
           title="Máster en IA e Innovación"
           institution="Founderz"
           period="02/2024 – 05/2024"
+          logoUrl="./founderz.png"
           delay={0.2}
           bullets={[
             "Elaboración de ChatBots internos en Sharepoint basados en Copilot.",
@@ -69,6 +76,7 @@ const Education = () => {
           institution="Universitat Politècnica de València"
           period="2020 – 2024"
           extra="Nivel 6 EQF-MEC"
+          logoUrl="./upv.png"
           delay={0.3}
         />
       </div>

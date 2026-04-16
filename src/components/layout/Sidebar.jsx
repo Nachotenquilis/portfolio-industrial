@@ -3,11 +3,11 @@ import { Mail, MapPin, Linkedin, Github, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Sidebar = () => {
-  const [activeSection, setActiveSection] = useState('experience');
+  const [activeSection, setActiveSection] = useState('about');
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['experience', 'skills', 'education'];
+      const sections = ['about', 'experience', 'skills', 'education'];
       let current = '';
       
       for (const section of sections) {
@@ -27,6 +27,7 @@ const Sidebar = () => {
   }, [activeSection]);
 
   const navLinks = [
+    { id: 'about', label: 'Sobre Mí' },
     { id: 'experience', label: 'Experiencia' },
     { id: 'skills', label: 'Habilidades' },
     { id: 'education', label: 'Educación & Idiomas' },
@@ -41,8 +42,8 @@ const Sidebar = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         {/* Profile Image - Clean rounded */}
-        <div className="mb-6 w-24 h-24 rounded-full overflow-hidden border-2 border-enagas-cyan/30 shadow-lg relative group">
-           <img src="/foto-cv.jpg" alt="Ignacio Ten Quilis" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" onError={(e) => { e.target.src = 'https://api.dicebear.com/7.x/initials/svg?seed=IQ'; }} />
+        <div className="mb-6 w-24 h-24 rounded-full overflow-hidden border-2 border-enagas-cyan/30 shadow-lg relative group bg-white">
+           <img src="./foto-cv.jpg" alt="Ignacio Ten Quilis" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" onError={(e) => { e.target.src = 'https://api.dicebear.com/7.x/initials/svg?seed=IQ'; }} />
         </div>
 
         <h1 className="text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-slate-100 mb-2">

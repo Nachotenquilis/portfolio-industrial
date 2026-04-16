@@ -4,6 +4,7 @@ import Sidebar from './components/layout/Sidebar';
 import Experience from './components/sections/Experience';
 import Skills from './components/sections/Skills';
 import Education from './components/sections/Education';
+import About from './components/sections/About';
 import MouseGlow from './components/layout/MouseGlow';
 import { motion } from 'framer-motion';
 
@@ -38,7 +39,7 @@ function App() {
         
         {/* Left Column: Fixed Sidebar */}
         <header className="lg:sticky lg:top-0 lg:max-h-screen lg:w-5/12 lg:flex lg:flex-col lg:justify-between py-12 lg:py-24 px-6 lg:pl-12 xl:pl-20">
-          <div className="hidden lg:absolute lg:top-10 lg:right-6 lg:block">
+          <div className="hidden lg:absolute lg:top-10 lg:right-6 lg:block border border-slate-200 dark:border-slate-800 rounded-full bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm p-1 shadow-sm">
              <ThemeToggle isDark={isDark} toggle={() => setIsDark(!isDark)} />
           </div>
           <Sidebar />
@@ -46,17 +47,9 @@ function App() {
 
         {/* Right Column: Scrollable Content */}
         <main className="lg:w-7/12 pt-24 lg:pt-24 pb-12 px-6 lg:pr-12 xl:pr-20 space-y-32">
-          <motion.section 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            id="about" 
-            className="lg:hidden text-slate-600 dark:text-slate-400 leading-relaxed font-light mt-12 mb-16 text-justify"
-          >
-            Ingeniero Industrial cursando el Máster Habilitante. Me especializo en la automatización y mejora de procesos
-            con el objetivo de aumentar la eficiencia operativa. Apasionado por soluciones analíticas, transición energética 
-            y tecnologías low-code.
-          </motion.section>
+          
+          {/* About injected to replace the simple block */}
+          <About />
 
           <Experience />
           <Skills />
