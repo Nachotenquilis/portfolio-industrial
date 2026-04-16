@@ -4,34 +4,45 @@
 
 @layer base {
   body {
-    @apply antialiased text-industrial-900 bg-industrial-100 transition-colors duration-700 ease-in-out font-sans;
+    @apply antialiased text-slate-800 bg-enagas-gray transition-colors duration-500 font-sans leading-relaxed selection:bg-enagas-cyan selection:text-white;
   }
   
   .dark body {
-    @apply text-industrial-100 bg-industrial-900;
+    @apply text-slate-300 bg-enagas-navy;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-slate-900 dark:text-slate-100;
   }
 }
 
 @layer utilities {
-  .neon-text-blue {
-    text-shadow: 0 0 5px #00E5FF, 0 0 10px #00E5FF, 0 0 20px #00E5FF;
-  }
-  .neon-text-orange {
-    text-shadow: 0 0 5px #FF5722, 0 0 10px #FF5722, 0 0 20px #FF5722;
+  .clean-card {
+    @apply bg-white dark:bg-[#042036] border border-slate-200 dark:border-slate-800/50 rounded-xl shadow-sm transition-all duration-300 hover:shadow-md hover:border-enagas-cyan/30;
   }
   
-  .metallic-panel {
-    @apply bg-gradient-to-br from-industrial-200 to-industrial-300 border border-industrial-400 shadow-[inset_0_1px_rgba(255,255,255,0.6),0_4px_6px_rgba(0,0,0,0.1)];
-  }
-  
-  .dark .metallic-panel {
-    @apply bg-gradient-to-br from-industrial-800 to-industrial-900 border border-industrial-700 shadow-[inset_0_1px_rgba(255,255,255,0.1),0_4px_6px_rgba(0,0,0,0.5)];
+  .glass-panel {
+    @apply bg-white/70 dark:bg-enagas-primary/30 backdrop-blur-md border border-white/20 dark:border-enagas-blue/20 shadow-lg;
   }
 
   .grid-bg {
     @apply bg-grid-pattern;
   }
   .dark .grid-bg {
-    background-image: url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0 0h40v40H0V0zm39 39V1H1v38h38z" fill="%23ffffff" fill-opacity="0.03" fill-rule="evenodd"/%3E%3C/svg%3E');
+    @apply bg-grid-pattern-dark;
   }
+}
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-enagas-blue;
 }

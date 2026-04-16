@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ThemeToggle from './components/layout/ThemeToggle';
-import Hero from './components/sections/Hero';
+import Sidebar from './components/layout/Sidebar';
 import Experience from './components/sections/Experience';
 import Skills from './components/sections/Skills';
 import Education from './components/sections/Education';
@@ -24,30 +24,41 @@ function App() {
   }, [isDark]);
 
   return (
-    <div className="min-h-screen grid-bg relative overflow-x-hidden">
-      {/* Top Navigation Bar / Diagnostics Panel */}
-      <nav className="fixed top-0 w-full z-50 metallic-panel border-b-0 backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-safety-orange animate-pulse"></div>
-            <span className="font-mono font-bold tracking-wider text-sm dark:text-safety-blue">SYS.CTRL // TEN_QUILIS</span>
+    <div className="min-h-screen grid-bg relative selection:bg-enagas-cyan selection:text-white">
+      {/* Mobile Top Nav for Theme Toggle */}
+      <div className="lg:hidden fixed top-0 w-full z-50 glass-panel border-b-0 px-6 py-4 flex justify-between items-center text-sm font-mono tracking-widest text-enagas-blue dark:text-enagas-cyan font-semibold">
+         <span>Ignacio.</span>
+         <ThemeToggle isDark={isDark} toggle={() => setIsDark(!isDark)} />
+      </div>
+
+      <div className="max-w-7xl mx-auto min-h-screen lg:flex">
+        
+        {/* Left Column: Fixed Sidebar */}
+        <header className="lg:sticky lg:top-0 lg:max-h-screen lg:w-5/12 lg:flex lg:flex-col lg:justify-between py-12 lg:py-24 px-6 lg:pl-12 xl:pl-20">
+          <div className="hidden lg:absolute lg:top-10 lg:right-6 lg:block">
+             <ThemeToggle isDark={isDark} toggle={() => setIsDark(!isDark)} />
           </div>
-          <ThemeToggle isDark={isDark} toggle={() => setIsDark(!isDark)} />
-        </div>
-      </nav>
+          <Sidebar />
+        </header>
 
-      {/* Main Content Area */}
-      <main className="pt-20 pb-12 max-w-5xl mx-auto px-4 space-y-24">
-        <Hero isDark={isDark} />
-        <Experience />
-        <Skills />
-        <Education />
-      </main>
+        {/* Right Column: Scrollable Content */}
+        <main className="lg:w-7/12 py-12 lg:py-24 px-6 lg:pr-12 xl:pr-20 space-y-24">
+          <section id="about" className="lg:hidden text-slate-600 dark:text-slate-400 leading-relaxed font-light mb-16">
+            Ingeniero Industrial cursando el Máster Habilitante. Me especializo en la automatización y mejora de procesos
+            con el objetivo de aumentar la eficiencia operativa. Apasionado por soluciones analíticas, transición energética 
+            y tecnologías low-code.
+          </section>
 
-      {/* Footer */}
-      <footer className="mt-20 py-8 text-center border-t border-industrial-300 dark:border-industrial-700 font-mono text-sm opacity-60">
-        <p>SYSTEM INITIATED // {new Date().getFullYear()} © IGNACIO TEN QUILIS</p>
-      </footer>
+          <Experience />
+          <Skills />
+          <Education />
+          
+          {/* Footer */}
+          <footer className="pt-20 pb-8 text-center sm:text-left text-sm opacity-50">
+            <p>© {new Date().getFullYear()} Ignacio Ten Quilis. Desarrollado con React y Tailwind.</p>
+          </footer>
+        </main>
+      </div>
     </div>
   );
 }
