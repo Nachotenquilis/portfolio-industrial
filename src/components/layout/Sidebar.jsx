@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, MapPin, Linkedin, Github, FileText } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../data/translations';
 
 const Sidebar = () => {
   const [activeSection, setActiveSection] = useState('about');
+  const { language } = useLanguage();
+  const t = translations[language].sidebar;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,38 +31,40 @@ const Sidebar = () => {
   }, [activeSection]);
 
   const navLinks = [
-    { id: 'experience', label: 'Experiencia' },
-    { id: 'skills', label: 'Habilidades' },
-    { id: 'education', label: 'Educación & Idiomas' },
-    { id: 'about', label: 'Sobre Mí' },
+    { id: 'experience', label: t.nav.experience },
+    { id: 'skills', label: t.nav.skills },
+    { id: 'education', label: t.nav.education },
+    { id: 'about', label: t.nav.about },
   ];
 
   return (
     <div className="flex flex-col gap-6 lg:gap-10 h-full mt-2 lg:mt-0">
       
-      <motion.div 
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        {/* Profile Image - Clean rounded */}
-        <div className="mb-6 w-24 h-24 rounded-full overflow-hidden border-2 border-enagas-cyan/30 shadow-lg relative group bg-white">
-           <img src="./foto-cv.jpg" alt="Ignacio Ten Quilis" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" onError={(e) => { e.target.src = 'https://api.dicebear.com/7.x/initials/svg?seed=IQ'; }} />
-        </div>
+      <AnimatePresence mode="wait">
+        <motion.div 
+          key={language}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -10 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          {/* Profile Image - Clean rounded */}
+          <div className="mb-6 w-32 h-32 rounded-full overflow-hidden border-2 border-enagas-cyan/30 shadow-lg relative group bg-white">
+             <img src="./foto-cv.jpg" alt="Ignacio Ten Quilis" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" onError={(e) => { e.target.src = 'https://api.dicebear.com/7.x/initials/svg?seed=IQ'; }} />
+          </div>
 
-        <h1 className="text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-slate-100 mb-2">
-          Ignacio <span className="text-transparent bg-clip-text bg-gradient-to-r from-enagas-blue to-enagas-cyan">Ten Quilis</span>
-        </h1>
-        <h2 className="text-lg lg:text-xl font-medium text-slate-700 dark:text-slate-300">
-          Ingeniero Industrial & Automatización
-        </h2>
-        
-        <p className="mt-8 text-base text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-sm hidden lg:block text-justify">
-          Me especializo en la automatización y mejora de procesos
-          con el objetivo de aumentar la eficiencia operativa. Apasionado por soluciones analíticas, transición energética 
-          y tecnologías low-code.
-        </p>
-      </motion.div>
+          <h1 className="text-4xl lg:text-5xl font-black tracking-tight text-slate-900 dark:text-slate-100 mb-2">
+            Ignacio <span className="text-transparent bg-clip-text bg-gradient-to-r from-enagas-blue to-enagas-cyan">Ten Quilis</span>
+          </h1>
+          <h2 className="text-lg lg:text-xl font-medium text-slate-700 dark:text-slate-300">
+            {t.role}
+          </h2>
+          
+          <p className="mt-8 text-base text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-sm hidden lg:block text-justify">
+            {t.bio}
+          </p>
+        </motion.div>
+      </AnimatePresence>
 
       {/* Navigation - Hidden on Mobile */}
       <nav className="hidden lg:flex flex-col gap-5 mt-10 uppercase text-xs font-bold tracking-widest text-slate-500">

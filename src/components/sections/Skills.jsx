@@ -1,8 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GaugeMeter from '../ui/GaugeMeter';
-import { motion } from 'framer-motion';
+import { motion, useAnimation, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../data/translations';
 
 const Skills = () => {
+  const { language } = useLanguage();
+  const t = translations[language].skills;
+  
+  const [automationValue, setAutomationValue] = useState(85);
+  const [clickCount, setClickCount] = useState(0);
+  const controls = useAnimation();
+
+  const handleAutomationClick = async () => {
+    const newCount = clickCount + 1;
+    setClickCount(newCount);
+
+    if (newCount === 10) {
+      setAutomationValue(86);
+      await controls.start({
+        scale: [1, 1.3, 0.9, 1.1, 1],
+        rotate: [0, 10, -10, 5, -5, 0],
+        transition: { duration: 0.6 }
+      });
+    } else {
+      controls.start({
+        scale: [1, 1.05, 1],
+        transition: { duration: 0.2 }
+      });
+    }
+  };
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -20,21 +48,24 @@ const Skills = () => {
     <section id="skills" className="scroll-mt-24 mb-10">
       <div className="sticky top-0 z-20 -mx-6 mb-8 w-screen glass-panel px-6 py-5 lg:hidden">
         <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100">
-          Habilidades
+          {t.title}
         </h2>
       </div>
 
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-10"
-      >
-         <p className="text-sm text-slate-600 dark:text-slate-400 font-light max-w-2xl leading-relaxed text-justify">
-           Cuento con experiencia demostrable combinando mis fundamentos de ingeniería industrial con herramientas modernas orientadas al análisis de datos y tecnologías low-code. Mantengo un especial foco en el ecosistema <strong>Microsoft 365, Power Platform</strong> y en la aplicación de metodologías de innovación y automatización para el sector energético.
-         </p>
-      </motion.div>
+      <AnimatePresence mode="wait">
+        <motion.div 
+          key={language}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.5 }}
+          className="mb-10"
+        >
+           <p className="text-sm text-slate-600 dark:text-slate-400 font-light max-w-2xl leading-relaxed text-justify">
+             {t.description}
+           </p>
+        </motion.div>
+      </AnimatePresence>
       
       <motion.div 
         variants={container}
@@ -43,10 +74,17 @@ const Skills = () => {
         viewport={{ once: true, margin: "-50px" }}
         className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12"
       >
-        <motion.div variants={item}><GaugeMeter label="Automatización" value={85} /></motion.div>
-        <motion.div variants={item}><GaugeMeter label="Power Platform" value={90} /></motion.div>
-        <motion.div variants={item}><GaugeMeter label="Sistemas de Gas" value={75} /></motion.div>
-        <motion.div variants={item}><GaugeMeter label="Resol. Problemas" value={95} /></motion.div>
+        <motion.div 
+          variants={item}
+          animate={controls}
+          onClick={handleAutomationClick}
+          className="cursor-pointer select-none"
+        >
+          <GaugeMeter label={t.gauges.automation} value={automationValue} />
+        </motion.div>
+        <motion.div variants={item}><GaugeMeter label={t.gauges.powerplatform} value={90} /></motion.div>
+        <motion.div variants={item}><GaugeMeter label={t.gauges.gas} value={75} /></motion.div>
+        <motion.div variants={item}><GaugeMeter label={t.gauges.problem_solving} value={95} /></motion.div>
       </motion.div>
 
       {/* Tech tags */}
@@ -64,8 +102,7 @@ const Skills = () => {
            { name: 'Copilot', img: './copilot.png' },
            { name: 'PowerApps', img: './powerapps.png' },
            { name: 'Excel (VBA)', img: './excel.png' },
-           { name: 'Innovación (IA)' },
-           { name: 'Gestión de Proyectos' }
+           ...t.tags.map(tag => ({ name: tag }))
          ].map(skill => (
             <div 
               key={skill.name} 

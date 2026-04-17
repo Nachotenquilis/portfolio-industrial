@@ -6,10 +6,15 @@ import Skills from './components/sections/Skills';
 import Education from './components/sections/Education';
 import About from './components/sections/About';
 import MouseGlow from './components/layout/MouseGlow';
+import ParticleBackground from './components/layout/ParticleBackground';
 import { motion } from 'framer-motion';
+import { useLanguage } from './context/LanguageContext';
+import { translations } from './data/translations';
 
 function App() {
   const [isDark, setIsDark] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language].footer;
 
   useEffect(() => {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -27,6 +32,7 @@ function App() {
 
   return (
     <div className="min-h-screen grid-bg relative selection:bg-enagas-cyan selection:text-white transition-colors duration-700">
+      <ParticleBackground />
       <MouseGlow />
       
       {/* Mobile Top Nav */}
@@ -54,7 +60,7 @@ function App() {
           <footer className="pt-10 pb-8 text-center sm:text-left text-sm opacity-60 font-mono">
             <p className="flex items-center justify-center sm:justify-start gap-2">
                <span className="w-2 h-2 rounded-full bg-enagas-cyan animate-pulse"></span>
-               © {new Date().getFullYear()} Ignacio Ten Quilis. Desarrollado con Vite, React y Tailwind.
+               © {new Date().getFullYear()} Ignacio Ten Quilis. {t.developedWith}
             </p>
           </footer>
         </main>

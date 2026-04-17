@@ -1,5 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../data/translations';
 
 const ExperienceItem = ({ role, company, period, tasks, url, logoUrl, delay = 0 }) => {
   return (
@@ -53,46 +55,45 @@ const ExperienceItem = ({ role, company, period, tasks, url, logoUrl, delay = 0 
 };
 
 const Experience = () => {
+  const { language } = useLanguage();
+  const t = translations[language].experience;
+
   return (
     <section id="experience" className="group/list scroll-mt-24">
       <div className="sticky top-0 z-20 -mx-6 mb-8 w-screen glass-panel px-6 py-5 lg:hidden">
         <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100">
-          Experiencia
+          {t.title}
         </h2>
       </div>
 
-      <div>
-        <ExperienceItem 
-          role="Técnico Desarrollo GTS"
-          company="Enagás GTS"
-          period="Jun 2025 – Actual"
-          url="https://www.enagas.es"
-          logoUrl="./enagas.png"
-          delay={0.1}
-          tasks={[
-            "Coordinación y ejecución del proceso anual de asignación de capacidad de inyección de hidrógeno en la red gasista, conforme a la normativa vigente.",
-            "Desarrollo de escenarios de previsión de demanda a largo plazo.",
-            "Elaboración de informes ejecutivos y dashboards interactivos para la Dirección.",
-            "Análisis y tratamiento de datos relacionados con el sistema gasista.",
-            "Diseño e implementación de soluciones low-code orientadas a la automatización eficiente de procesos internos.",
-            "Aplicación de inteligencia artificial en los procesos de la Gerencia de Desarrollo GTS impulsando la innovación y la mejora continua."
-          ]}
-        />
-        <ExperienceItem 
-          role="Junior Product Engineer"
-          company="Sika"
-          period="Feb 2024 – Jul 2024"
-          url="https://esp.sika.com/"
-          logoUrl="./sika.png"
-          delay={0.2}
-          tasks={[
-            "Automatización de tareas mediante herramientas pertenecientes al entorno de Microsoft como PowerApps y PowerAutomate.",
-            "Implementación y gobernanza conjunta de todo el ecosistema Microsoft 365 en las automatizaciones (Sharepoint, Teams).",
-            "Creación de informes interactivos mediante PowerBI para control productivo.",
-            "Creación de Excels automáticos mediante VBA orientados al cálculo de estructuras resistentes."
-          ]}
-        />
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={language}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ExperienceItem 
+            role={t.items[0].role}
+            company={t.items[0].company}
+            period={t.items[0].period}
+            url="https://www.enagas.es"
+            logoUrl="./enagas.png"
+            delay={0.1}
+            tasks={t.items[0].tasks}
+          />
+          <ExperienceItem 
+            role={t.items[1].role}
+            company={t.items[1].company}
+            period={t.items[1].period}
+            url="https://esp.sika.com/"
+            logoUrl="./sika.png"
+            delay={0.2}
+            tasks={t.items[1].tasks}
+          />
+        </motion.div>
+      </AnimatePresence>
     </section>
   );
 };

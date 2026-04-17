@@ -1,5 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
+import { translations } from '../../data/translations';
 
 const EducationCard = ({ title, institution, period, bullets, extra, logoUrl, delay = 0 }) => (
   <motion.div 
@@ -43,43 +45,40 @@ const EducationCard = ({ title, institution, period, bullets, extra, logoUrl, de
 );
 
 const Education = () => {
+  const { language, switchLanguage } = useLanguage();
+  const t = translations[language].education;
+
   return (
     <section id="education" className="scroll-mt-24">
       <div className="sticky top-0 z-20 -mx-6 mb-8 w-screen glass-panel px-6 py-5 lg:hidden backdrop-blur-md">
         <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-slate-100">
-          Educación & Idiomas
+          {t.title}
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
-        <EducationCard 
-          title="Máster Universitario en Ingeniería Industrial"
-          institution="Universitat Politècnica de València"
-          period="2024 – Actual"
-          extra="Nivel 7 EQF-MEC"
-          logoUrl="./upv.png"
-          delay={0.1}
-        />
-        <EducationCard 
-          title="Máster en IA e Innovación"
-          institution="Founderz"
-          period="02/2024 – 05/2024"
-          logoUrl="./founderz.png"
-          delay={0.2}
-          bullets={[
-            "Elaboración de ChatBots internos en Sharepoint basados en Copilot.",
-            "Utilización de IA no generativa perteneciente al ecosistema Microsoft 365 para la automatización de procesos de negocio."
-          ]}
-        />
-        <EducationCard 
-          title="Grado en Ingeniería en Tecnologías Industriales"
-          institution="Universitat Politècnica de València"
-          period="2020 – 2024"
-          extra="Nivel 6 EQF-MEC"
-          logoUrl="./upv.png"
-          delay={0.3}
-        />
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={language}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10"
+        >
+          {t.items.map((item, index) => (
+            <EducationCard 
+              key={index}
+              title={item.title}
+              institution={item.institution}
+              period={item.period}
+              extra={item.extra}
+              bullets={item.bullets}
+              logoUrl={translations.es.education.items[index].logoUrl} // Logos stay the same
+              delay={index * 0.1}
+            />
+          ))}
+        </motion.div>
+      </AnimatePresence>
 
       {/* Languages Section */}
       <motion.div 
@@ -88,17 +87,27 @@ const Education = () => {
         viewport={{ once: true }}
         transition={{ duration: 1 }}
       >
-        <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-5">Idiomas</h3>
+        <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-5">{t.langs_title}</h3>
         <div className="flex flex-wrap gap-4 text-sm font-mono">
-           <div className="px-5 py-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg text-slate-700 dark:text-slate-300 font-medium border border-slate-200 dark:border-slate-700 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
-              Español <span className="text-slate-400 dark:text-slate-500 font-normal text-xs ml-1">(Nativo)</span>
-           </div>
-           <div className="px-5 py-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg text-slate-700 dark:text-slate-300 font-medium border border-slate-200 dark:border-slate-700 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
-              Catalán <span className="text-slate-400 dark:text-slate-500 font-normal text-xs ml-1">(Nativo)</span>
-           </div>
-           <div className="px-5 py-2.5 bg-slate-50 dark:bg-enagas-primary/20 rounded-lg text-slate-800 dark:text-white font-semibold border border-enagas-cyan/30 shadow-[0_0_15px_rgba(0,169,224,0.1)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(0,169,224,0.2)]">
-              Inglés <span className="text-enagas-blue dark:text-enagas-cyan font-black text-xs ml-2 tracking-widest">C1/B2</span>
-           </div>
+           {t.languages.map((lang) => (
+             <motion.div 
+               key={lang.id}
+               onClick={() => switchLanguage(lang.id)}
+               whileHover={{ 
+                 y: -2,
+                 boxShadow: "0 0 20px rgba(0, 169, 224, 0.2)",
+                 borderColor: "rgba(0, 169, 224, 0.4)",
+                 backgroundColor: "rgba(0, 169, 224, 0.05)"
+               }}
+               className={`px-5 py-2.5 rounded-lg font-medium border transition-all cursor-pointer select-none ${
+                 language === lang.id 
+                 ? 'bg-enagas-blue/10 dark:bg-enagas-cyan/20 text-enagas-blue dark:text-enagas-cyan border-enagas-cyan/40 shadow-sm' 
+                 : 'bg-slate-50 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700'
+               }`}
+             >
+                {lang.name} <span className={`font-normal text-xs ml-1 ${language === lang.id ? 'opacity-100' : 'opacity-40'}`}>({lang.level})</span>
+             </motion.div>
+           ))}
         </div>
       </motion.div>
     </section>
