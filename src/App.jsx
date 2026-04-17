@@ -44,7 +44,7 @@ function App() {
       <div className="max-w-7xl mx-auto min-h-screen lg:flex relative z-10">
         
         {/* Left Column: Fixed Sidebar */}
-        <header className="lg:sticky lg:top-0 lg:max-h-screen lg:w-5/12 lg:flex lg:flex-col lg:justify-between py-12 lg:py-24 px-6 lg:pl-12 xl:pl-20 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-700">
+        <header className="lg:sticky lg:top-0 lg:max-h-screen lg:w-5/12 lg:flex lg:flex-col lg:justify-between py-8 lg:py-12 px-6 lg:pl-12 xl:pl-20 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-700">
           <Sidebar />
         </header>
 
