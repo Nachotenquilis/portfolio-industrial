@@ -86,7 +86,7 @@ const Sidebar = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
-        className="mt-auto pt-8 flex flex-col gap-4 font-mono text-xs text-slate-500 dark:text-slate-400"
+        className="mt-12 pt-8 flex flex-col gap-4 font-mono text-xs text-slate-500 dark:text-slate-400"
       >
         <a href="mailto:nachotenquilis@gmail.com" className="flex items-center gap-3 hover:text-enagas-blue dark:hover:text-enagas-cyan transition-colors w-max group">
           <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -98,15 +98,12 @@ const Sidebar = () => {
         </div>
 
         <div className="flex gap-5 mt-6">
-          <a href="#" aria-label="LinkedIn" className="text-slate-400 hover:text-enagas-blue dark:hover:text-enagas-cyan hover:-translate-y-1 transition-all duration-300">
-            <Linkedin className="w-6 h-6" />
-          </a>
-          <a href="#" aria-label="GitHub" className="text-slate-400 hover:text-slate-800 dark:hover:text-white hover:-translate-y-1 transition-all duration-300">
-            <Github className="w-6 h-6" />
-          </a>
-          <a href="#" aria-label="Resume" className="text-slate-400 hover:text-enagas-cyan hover:-translate-y-1 transition-all duration-300">
-            <FileText className="w-6 h-6" />
-          </a>
+           <a href="https://www.linkedin.com/in/ignacio-ten-quilis-a3319126a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-slate-400 hover:text-enagas-blue dark:hover:text-enagas-cyan hover:-translate-y-1 transition-all duration-300">
+              <Linkedin className="w-6 h-6" />
+           </a>
+           <a href="https://github.com/Nachotenquilis" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-slate-400 hover:text-slate-800 dark:hover:text-white hover:-translate-y-1 transition-all duration-300">
+              <Github className="w-6 h-6" />
+           </a>
         </div>
       </motion.div>
 
