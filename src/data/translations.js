@@ -101,7 +101,7 @@ export const translations = {
         'Soy un Ingeniero en Tecnologías Industriales que actualmente cursa el Máster Habilitante, con el propósito de fortalecer mis conocimientos técnicos y ampliar mi perspectiva en los distintos sectores productivos que mueven el mundo.',
         'A lo largo de mi formación y trayectoria, me he especializado en la automatización y mejora de procesos. Me mueve el objetivo constante de aumentar la eficiencia operativa, reducir costes y optimizar recursos a través del diseño e implementación de soluciones en la nube y tecnologías low-code.',
         'Mi interés genuino por la optimización productiva nace en la búsqueda constante de la eficiencia estructural. A este perfil puramente técnico se le suma una vocación que considero casi un legado familiar: una profunda conexión profesional y personal con el sistema gasista y la gestión de infraestructuras energéticas.',
-        'Entiendo la ingeniería como una disciplina de alto rendimiento, algo que también aplico a mi vida personal. Más allá de las pantallas o el diseño de soluciones tecnológicas, mi gasolina es el Snowboard y la práctica deportiva constante. Como antiguo deportista de élite internacional en Karate, la disciplina, la constancia y el trabajo bajo presión se han convertido en mi estándar innegociable a la hora de afrontar cualquier proyecto.'
+        'Entiendo la ingeniería como una disciplina de alto rendimiento, algo que también aplico a mi vida personal. Más allá de las pantallas o el diseño de soluciones tecnológicas, mi gasolina es el Snowboard y la práctica deportiva constante. La disciplina, la constancia y el trabajo bajo presión se han convertido en mi estándar innegociable a la hora de afrontar cualquier proyecto.'
       ]
     },
     footer: {
@@ -210,7 +210,7 @@ export const translations = {
         'Sóc un Enginyer en Tecnologies Industrials que actualment cursa el Màster Habilitant, amb el propòsit d\'enfortir els meus coneixements tècnics i ampliar la meua perspectiva en els diferents sectors productius que mouen el món.',
         'Al llarg de la meua formació i trajectòria, m\'he especialitzat en l\'automatització i millora de processos. Em mou l\'objectiu constant d\'augmentar l\'eficiència operativa, reduir costos i optimitzar recursos a través del disseny i implementació de solucions en el núvol i tecnologies low-code.',
         'El meu interés genuí per l\'optimització productiva neix en la cerca constant de l\'eficiència estructural. A aquest perfil purament tècnic se li suma una vocació que considere gairebé un llegat familiar: una profunda connexió professional i personal amb el sistema gasista i la gestió d\'infraestructures energètiques.',
-        'Entenc l\'enginyeria com una disciplina d\'alt rendiment, cosa que també aplique a la meua vida personal. Més enllà de les pantalles o el disseny de solucions tecnològiques, la meua gasolina és el Snowboard i la pràctica esportiva constant. Com a antic esportista d\'elit internacional en Karate, la disciplina, la constància i el treball sota pressió s\'han convertit en el meu estàndard innegociable a l\'hora d\'afrontar qualsevol projecte.'
+        'Entenc l\'enginyeria com una disciplina d\'alt rendiment, cosa que també aplique a la meua vida personal. Més enllà de les pantalles o el disseny de solucions tecnològiques, la meua gasolina és el Snowboard i la pràctica esportiva constant. La disciplina, la constància i el treball sota pressió s\'han convertit en el meu estàndard innegociable a l\'hora d\'afrontar qualsevol projecte.'
       ]
     },
     footer: {
@@ -319,7 +319,7 @@ export const translations = {
         'I am an Industrial Technologies Engineer currently pursuing a Master\'s degree, with the aim of strengthening my technical knowledge and expanding my perspective in the different productive sectors that drive the world.',
         'Throughout my education and career, I have specialized in process automation and improvement. I am driven by the constant goal of increasing operational efficiency, reducing costs, and optimizing resources through the design and implementation of cloud solutions and low-code technologies.',
         'My genuine interest in production optimization stems from the constant search for structural efficiency. Added to this purely technical profile is a vocation that I consider almost a family legacy: a deep professional and personal connection with the gas system and energy infrastructure management.',
-        'I understand engineering as a high-performance discipline, something I also apply to my personal life. Beyond screens or designing technological solutions, my fuel is Snowboarding and constant sports practice. As a former international elite Karate athlete, discipline, perseverance, and working under pressure have become my non-negotiable standard when facing any project.'
+        'I understand engineering as a high-performance discipline, something I also apply to my personal life. Beyond screens or designing technological solutions, my fuel is Snowboarding and constant sports practice. Discipline, perseverance, and working under pressure have become my non-negotiable standard when facing any project.'
       ]
     },
     footer: {
