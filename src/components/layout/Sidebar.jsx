@@ -38,7 +38,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-4 lg:gap-6 h-full mt-2 lg:mt-0">
+    <div className="flex flex-col gap-1 lg:gap-2 h-full mt-2 lg:mt-0">
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -49,7 +49,7 @@ const Sidebar = () => {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           {/* Profile Image - Clean rounded */}
-          <div className="mb-4 w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden border-2 border-enagas-cyan/30 shadow-lg relative group bg-white">
+          <div className="mb-2 w-24 h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden border-2 border-enagas-cyan/30 shadow-lg relative group bg-white">
             <img src="./foto-cv.jpg" alt="Ignacio Ten Quilis" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" onError={(e) => { e.target.src = 'https://api.dicebear.com/7.x/initials/svg?seed=IQ'; }} />
           </div>
 
@@ -60,14 +60,14 @@ const Sidebar = () => {
             {t.role}
           </h2>
 
-          <p className="mt-4 text-base text-slate-600 dark:text-slate-400 font-light leading-relaxed max-w-sm hidden lg:block text-justify">
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 font-light leading-snug max-w-sm hidden lg:block text-justify">
             {t.bio}
           </p>
         </motion.div>
       </AnimatePresence>
 
       {/* Navigation - Hidden on Mobile */}
-      <nav className="hidden lg:flex flex-col gap-3 mt-6 uppercase text-xs font-bold tracking-widest text-slate-500">
+      <nav className="hidden lg:flex flex-col gap-2 mt-4 uppercase text-[10px] font-bold tracking-widest text-slate-500">
         {navLinks.map((link) => (
           <a
             key={link.id}
@@ -86,7 +86,7 @@ const Sidebar = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
-        className="mt-8 pt-6 flex flex-col gap-3 font-mono text-xs text-slate-500 dark:text-slate-400"
+        className="mt-6 pt-4 flex flex-col gap-2 font-mono text-[10px] text-slate-500 dark:text-slate-400"
       >
         <a href="mailto:nachotenquilis@gmail.com" className="flex items-center gap-3 hover:text-enagas-blue dark:hover:text-enagas-cyan transition-colors w-max group">
           <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -97,7 +97,7 @@ const Sidebar = () => {
           <span>Madrid</span>
         </div>
 
-        <div className="flex gap-5 mt-4">
+        <div className="flex gap-4 mt-3">
            <a href="https://www.linkedin.com/in/ignacio-ten-quilis-a3319126a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-slate-400 hover:text-enagas-blue dark:hover:text-enagas-cyan hover:-translate-y-1 transition-all duration-300">
               <Linkedin className="w-6 h-6" />
            </a>
